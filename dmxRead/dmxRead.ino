@@ -2,10 +2,14 @@
 
 void setup() {
   DMXSerial.init(DMXReceiver);
-  Serial.begin(9600);
 }
 
 void loop() {
-  int dmxVal = DMXSerial.read(startAddress);
-  Serial.println(dmxVal);
+  int dmxVal = DMXSerial.read(1);
+  if (dmxVal > 128){
+    digitalWrite(4, HIGH);
+  }
+  else{
+    digitalWrite(4, LOW);
+  }
 }
