@@ -27,6 +27,8 @@ void setup() {
   pinMode(BTN_UP, INPUT_PULLUP);
   pinMode(BTN_DOWN, INPUT_PULLUP);
 
+  pinMode(STATUSPIN, OUTPUT);
+
   Serial.begin(9600);
   display.clear();
   display.showNumberDec(startAddress, false, 3, 0);
@@ -39,7 +41,7 @@ void loop() {
 
   int it = 0;
 if(digitalRead(BTN_UP) == LOW && digitalRead(BTN_DOWN) == HIGH) {
-  for (int i = startAddress + 1; i <= 255 && digitalRead(BTN_UP) == LOW; i++) {
+  for (int i = startAddress + 1; i <= 512 && digitalRead(BTN_UP) == LOW; i++) {
 
     display.showNumberDec(i, false, 3, 0);
 
